@@ -207,38 +207,19 @@ namespace VaultSharp.Core
                 switch (httpMethod.ToString().ToUpperInvariant())
                 {
                     case "GET":
-
-                        httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, requestUri);
-                        break;
-
                     case "DELETE":
-
-                        httpRequestMessage = new HttpRequestMessage(HttpMethod.Delete, requestUri);
-                        break;
-
-                    case "POST":
-
-                        httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri)
-                        {
-                            Content = requestContent
-                        };
-
-                        break;
-
-                    case "PUT":
-
-                        httpRequestMessage = new HttpRequestMessage(HttpMethod.Put, requestUri)
-                        {
-                            Content = requestContent
-                        };
-
-                        break;
-
                     case "HEAD":
-
-                        httpRequestMessage = new HttpRequestMessage(HttpMethod.Head, requestUri);
+                    case "LIST":
+                        httpRequestMessage = new HttpRequestMessage(httpMethod, requestUri);
                         break;
+                    case "POST":
+                    case "PUT":
+                        httpRequestMessage = new HttpRequestMessage(httpMethod, requestUri)
+                        {
+                            Content = requestContent
+                        };
 
+                        break;
                     default:
                         throw new NotSupportedException("The Http Method is not supported: " + httpMethod);
                 }

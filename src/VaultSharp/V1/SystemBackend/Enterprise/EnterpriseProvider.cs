@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using VaultSharp.Core;
 using VaultSharp.V1.Commons;
@@ -105,6 +106,11 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
         public async Task DeleteEGPPolicyAsync(string policyName)
         {
             await _polymath.MakeVaultApiRequest("v1/sys/policies/egp/" + policyName, HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
+        public async Task<Secret<Dictionary<string, Namespaces>>> GetNameSpaceAsync()
+        {
+            return await _polymath.MakeVaultApiRequest<Secret<Dictionary<string, Namespaces>>>("v1/sys/namespaces", new HttpMethod("LIST")).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

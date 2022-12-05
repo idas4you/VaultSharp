@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using VaultSharp.V1.Commons;
 
 namespace VaultSharp.V1.SystemBackend.Enterprise
@@ -152,5 +153,8 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
         /// The task.
         /// </returns>
         Task DeleteEGPPolicyAsync(string policyName);
+
+
+        Task<Secret<Dictionary<string, Namespaces>>> GetNameSpaceAsync();
     }
 }

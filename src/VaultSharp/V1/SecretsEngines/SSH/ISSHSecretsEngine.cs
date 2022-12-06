@@ -42,5 +42,17 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         /// Provide a value only if you have customized the SSH mount point.</param>
         /// <returns>The signed key</returns>
         Task<Secret<SignedKeyResponse>> SignKeyAsync(string roleName, SignKeyRequest signKeyRequest, string mountPoint = null);
+
+
+        /// <summary>
+        /// This endpoint creates or updates a named role.
+        /// </summary>
+        /// <param name="name"> Specifies the name of the role to create. This is part of the request URL.</param>
+        /// <param name="sshRoleRequest"></param>
+        /// <param name="mountPoint"><para>[optional]</para>
+        /// The mount point for the SSH backend. Defaults to <see cref="SecretsEngineMountPoints.SSH" />
+        /// Provide a value only if you have customized the SSH mount point.</param>
+        /// <returns></returns>
+        Task<Secret<SignedKeyResponse>> CreateRole(string name, SSHRoles sshRoleRequest, string mountPoint = null);
     }
 }

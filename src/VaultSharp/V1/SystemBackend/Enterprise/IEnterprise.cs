@@ -155,6 +155,18 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
         Task DeleteEGPPolicyAsync(string policyName);
 
 
-        Task<Secret<Dictionary<string, Namespaces>>> GetNameSpaceAsync();
+        /// <summary>
+        /// This endpoints lists all the namespaces.
+        /// </summary>
+        /// <returns></returns>
+        Task<Secret<NamespaceList>> GetNameSpaceListAsync();
+
+        /// <summary>
+        /// This endpoint creates a namespace at the given path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="customMetadata"></param>
+        /// <returns></returns>
+        Task<Secret<NamespaceInfo>> CreateNameSpaceAsync(string path, Dictionary<string,string> customMetadata);
     }
 }

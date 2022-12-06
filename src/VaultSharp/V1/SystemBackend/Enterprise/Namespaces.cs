@@ -7,7 +7,16 @@ using Newtonsoft.Json;
 
 namespace VaultSharp.V1.SystemBackend.Enterprise
 {
-    public class Namespaces
+    public class NamespaceList
+    {
+        [JsonProperty("key_info")]
+        public Dictionary<string, NamespaceInfo> KeyInfo { get; set; }
+
+        [JsonProperty("keys")]
+        public List<string> Keys { get; set; }
+    }
+
+    public class NamespaceInfo
     {
         [JsonProperty("custom_metadata")]
         public Dictionary<string, string> CustomMetadata { get; set; }

@@ -123,9 +123,9 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
             return await _polymath.MakeVaultApiRequest<Secret<NamespaceInfo>>("v1/sys/namespaces/" + path, HttpMethod.Get).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public async Task<Secret<NamespaceInfo>> DeleteNamespaceAsync(string path)
+        public async Task DeleteNamespaceAsync(string path)
         {
-            return await _polymath.MakeVaultApiRequest<Secret<NamespaceInfo>>("v1/sys/namespaces/" + path, HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+            await _polymath.MakeVaultApiRequest("v1/sys/namespaces/" + path, HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

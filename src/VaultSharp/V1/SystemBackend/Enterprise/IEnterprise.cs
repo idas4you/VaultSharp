@@ -183,6 +183,6 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
         /// </summary>
         /// <param name="path">Specifies the path where the namespace will be created.</param>
         /// <returns></returns>
-        Task<Secret<NamespaceInfo>> DeleteNamespaceAsync(string path);
+        Task DeleteNamespaceAsync(string path);
     }
 }

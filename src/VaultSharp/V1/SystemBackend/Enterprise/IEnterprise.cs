@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
+using VaultSharp.Core;
 using VaultSharp.V1.Commons;
 
 namespace VaultSharp.V1.SystemBackend.Enterprise
@@ -159,7 +161,7 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
         /// This endpoints lists all the namespaces.
         /// </summary>
         /// <returns></returns>
-        Task<Secret<NamespaceList>> ReadAllNameSpaceAsync();
+        Task<Secret<NamespaceList>> ReadAllNamespaceAsync();
 
         /// <summary>
         /// This endpoint creates a namespace at the given path.
@@ -167,6 +169,20 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
         /// <param name="path"></param>
         /// <param name="customMetadata"></param>
         /// <returns></returns>
-        Task<Secret<NamespaceInfo>> CreateNameSpaceAsync(string path, Dictionary<string,string> customMetadata);
+        Task<Secret<NamespaceInfo>> CreateNamespaceAsync(string path, Dictionary<string,string> customMetadata);
+
+        /// <summary>
+        /// This endpoint gets the metadata for the given namespace path.
+        /// </summary>
+        /// <param name="path">Specifies the path where the namespace will be created.</param>
+        /// <returns></returns>
+        Task<Secret<NamespaceInfo>> ReadNamespaceAsync(string path);
+
+        /// <summary>
+        /// Specifies the path where the namespace will be created.
+        /// </summary>
+        /// <param name="path">Specifies the path where the namespace will be created.</param>
+        /// <returns></returns>
+        Task<Secret<NamespaceInfo>> DeleteNamespaceAsync(string path);
     }
 }

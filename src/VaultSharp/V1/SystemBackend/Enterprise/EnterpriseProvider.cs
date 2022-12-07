@@ -108,22 +108,22 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
             await _polymath.MakeVaultApiRequest("v1/sys/policies/egp/" + policyName, HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public async Task<Secret<NamespaceList>> ReadAllNameSpaceAsync()
+        public async Task<Secret<NamespaceList>> ReadAllNamespaceAsync()
         {
             return await _polymath.MakeVaultApiRequest<Secret<NamespaceList>>("v1/sys/namespaces?list=true", HttpMethod.Get).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public async Task<Secret<NamespaceInfo>> CreateNameSpaceAsync(string path, Dictionary<string, string> customMetadata)
+        public async Task<Secret<NamespaceInfo>> CreateNamespaceAsync(string path, Dictionary<string, string> customMetadata)
         {
             return await _polymath.MakeVaultApiRequest<Secret<NamespaceInfo>>("v1/sys/namespaces/" + path, HttpMethod.Post, customMetadata).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public async Task<Secret<NamespaceInfo>> ReadNameSpaceAsync(string path)
+        public async Task<Secret<NamespaceInfo>> ReadNamespaceAsync(string path)
         {
             return await _polymath.MakeVaultApiRequest<Secret<NamespaceInfo>>("v1/sys/namespaces/" + path, HttpMethod.Get).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public async Task<Secret<NamespaceInfo>> DeleteNameSpaceAsync(string path)
+        public async Task<Secret<NamespaceInfo>> DeleteNamespaceAsync(string path)
         {
             return await _polymath.MakeVaultApiRequest<Secret<NamespaceInfo>>("v1/sys/namespaces/" + path, HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }

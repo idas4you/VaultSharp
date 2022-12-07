@@ -159,7 +159,7 @@ namespace VaultSharp.V1.SystemBackend.Enterprise
         /// This endpoints lists all the namespaces.
         /// </summary>
         /// <returns></returns>
-        Task<Secret<NamespaceList>> GetNameSpaceListAsync();
+        Task<Secret<NamespaceList>> ReadAllNameSpaceAsync();
 
         /// <summary>
         /// This endpoint creates a namespace at the given path.

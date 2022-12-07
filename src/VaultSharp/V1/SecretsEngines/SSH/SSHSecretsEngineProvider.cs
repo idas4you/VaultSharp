@@ -37,7 +37,7 @@ namespace VaultSharp.V1.SecretsEngines.SSH
             Checker.NotNull(name, "name");
             Checker.NotNull(sshRoles, "sshRoles");
 
-            return await _polymath.MakeVaultApiRequest<Secret<SignedKeyResponse>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/sign/roles/" + name, HttpMethod.Post, sshRoles).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+            return await _polymath.MakeVaultApiRequest<Secret<SignedKeyResponse>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/roles/" + name, HttpMethod.Post, sshRoles).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

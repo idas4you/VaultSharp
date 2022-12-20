@@ -30,6 +30,7 @@ namespace VaultSharp.V1.AuthMethods
             AppRole = new AppRoleAuthMethodProvider(_polymath);
             LDAP = new LDAPAuthMethodProvider(_polymath);
             Token = new TokenAuthMethodProvider(_polymath);
+            UserPass = new UserPassAuthMethodProvider(_polymath);
         }
 
         public IAliCloudAuthMethod AliCloud => throw new NotImplementedException();
@@ -62,7 +63,7 @@ namespace VaultSharp.V1.AuthMethods
 
         public ITokenAuthMethod Token { get; }
 
-        public IUserPassAuthMethod UserPass => throw new NotImplementedException();
+        public IUserPassAuthMethod UserPass { get; }
 
         public void ResetVaultToken()
         {

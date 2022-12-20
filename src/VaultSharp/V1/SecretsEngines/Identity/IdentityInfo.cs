@@ -13,6 +13,9 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         public string BucketKeyHash { get; set; }
         [JsonProperty("creation_time")]
         public DateTime CreationTime { get; set; }
+        /// <summary>
+        /// Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
+        /// </summary>
         [JsonProperty("disabled")]
         public bool Disabled { get; set; }
 
@@ -23,12 +26,22 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         public string Id { get; set; }
         [JsonProperty("last_update_time")]
         public DateTime LastUpdateTime { get; set; }
+        /// <summary>
+        /// Metadata to be associated with the entity.
+        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Name of the entity.
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("aliases")]
         public List<string> Aliases { get; set; }
+        /// <summary>
+        /// Policies to be tied to the entity.
+        /// </summary>
         [JsonProperty("policies")]
         public List<string> Policies { get; set; }
     }

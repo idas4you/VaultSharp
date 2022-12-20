@@ -5,7 +5,6 @@ namespace VaultSharp.V1.AuthMethods.UserPass
 {
     public interface IUserPassAuthMethod
     {
-
         Task CreateUserPassAsync(string userName, CreateUserPassRequest createUserpassRequest);
     }
 }

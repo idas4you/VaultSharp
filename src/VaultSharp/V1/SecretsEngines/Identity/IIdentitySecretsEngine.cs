@@ -46,5 +46,12 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// Indicates if the token is active.
         /// </returns>
         Task<Secret<bool>> IntrospectTokenAsync(string token, string clientId = null, string mountPoint = null, string wrapTimeToLive = null);
+
+        /// <summary>
+        /// This endpoint creates or updates an Entity.
+        /// </summary>
+        /// <param name="createEntityReqeust"></param>
+        /// <returns></returns>
+        Task<Secret<IdentityInfo>> CreateEntity(CreateEntityReqeust createEntityReqeust);
     }
 }

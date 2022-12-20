@@ -27,5 +27,12 @@ namespace VaultSharp.V1.SecretsEngines.Identity
 
             return await _polymath.MakeVaultApiRequest<Secret<bool>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/oidc/introspect", HttpMethod.Post, new { token, client_id = clientId }, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
+
+        public async Task<Secret<IdentityInfo>> CreateEntity(CreateEntityReqeust createEntityReqeust)
+        {
+            Checker.NotNull(createEntityReqeust, "createEntityReqeust");
+
+            return await _polymath.MakeVaultApiRequest<Secret<IdentityInfo>>("v1/identity/entity", HttpMethod.Post, createEntityReqeust).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
     }
 }

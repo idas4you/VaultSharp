@@ -57,9 +57,9 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// <summary>
         /// This endpoint queries the entity by its identifier.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        Task<Secret<IdentityInfo>> GetEntityById(string id, string wrapTimeToLive = null);
+        Task<Secret<IdentityInfo>> GetEntityByName(string name, string wrapTimeToLive = null);
 
         /// <summary>
         /// This endpoint creates a new alias for an entity.

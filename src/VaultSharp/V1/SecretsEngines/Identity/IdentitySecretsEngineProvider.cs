@@ -41,10 +41,10 @@ namespace VaultSharp.V1.SecretsEngines.Identity
             return await _polymath.MakeVaultApiRequest<Secret<CreateEntityAliasInfo>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity-alias", HttpMethod.Post, createEntityAliasInfo, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public  async Task<Secret<IdentityInfo>> GetEntityById(string id, string wrapTimeToLive = null)
+        public  async Task<Secret<IdentityInfo>> GetEntityByName(string name, string wrapTimeToLive = null)
         {
-            Checker.NotNull(id, "id");
-            return await _polymath.MakeVaultApiRequest<Secret<IdentityInfo>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity/id/" + id, HttpMethod.Get, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+            Checker.NotNull(name, "id");
+            return await _polymath.MakeVaultApiRequest<Secret<IdentityInfo>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity/name/" + name, HttpMethod.Get, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

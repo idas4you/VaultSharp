@@ -9,39 +9,34 @@ namespace VaultSharp.V1.SecretsEngines.Identity
 {
     public class IdentityInfo
     {
-        [JsonProperty("bucket_key_hash")]
-        public string BucketKeyHash { get; set; }
-        [JsonProperty("creation_time")]
-        public DateTime CreationTime { get; set; }
-        /// <summary>
-        /// Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
-        /// </summary>
-        [JsonProperty("disabled")]
-        public bool Disabled { get; set; }
-
-        /// <summary>
-        ///  Identifier of the entity.
-        /// </summary>
-        [JsonProperty("id")]
-        public string Id { get; set; }
-        [JsonProperty("last_update_time")]
-        public DateTime LastUpdateTime { get; set; }
-        /// <summary>
-        /// Metadata to be associated with the entity.
-        /// </summary>
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
-        /// Name of the entity.
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
         [JsonProperty("aliases")]
         public List<string> Aliases { get; set; }
-        /// <summary>
-        /// Policies to be tied to the entity.
-        /// </summary>
+        [JsonProperty("creation_time")]
+        public DateTime CreationTime { get; set; }
+
+        [JsonProperty("direct_group_ids")]
+        public List<string> DirectGroupIds { get; set; }
+        [JsonProperty("disabled")]
+        public bool Disabled { get; set; }
+        [JsonProperty("group_ids")]
+        public List<string> GroupIds { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("inherited_group_ids")]
+        public List<string> InheritedGroupIds { get; set; }
+        [JsonProperty("last_update_time")]
+        public DateTime LastUpdateTime { get; set; }
+        [JsonProperty("merged_entity_ids")]
+        public List<string> MergedEntityIds { get; set; }
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+        [JsonProperty("mfa_secrets")]
+        public string MfaSecrets { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("namespace_id")]
+        public string NamespaceId { get; set; }
         [JsonProperty("policies")]
         public List<string> Policies { get; set; }
     }

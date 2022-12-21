@@ -10,6 +10,7 @@ namespace VaultSharp.V1.SecretsEngines.Identity
     public class CreateEntityReqeust
     {
         /// <summary>
+        /// [required]
         /// Name of the entity.
         /// </summary>
         [JsonProperty("name")]

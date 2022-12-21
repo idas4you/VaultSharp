@@ -34,7 +34,7 @@ namespace VaultSharp.V1.AuthMethods.AliCloud
         /// </summary>
         /// <value>
         /// The role name.
-        /// </value>
+        /// </value>4
         [JsonProperty("role")]
         public string RoleName { get; }
 

@@ -28,11 +28,23 @@ namespace VaultSharp.V1.SecretsEngines.Identity
             return await _polymath.MakeVaultApiRequest<Secret<bool>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/oidc/introspect", HttpMethod.Post, new { token, client_id = clientId }, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public async Task<Secret<IdentityInfo>> CreateEntity(CreateEntityReqeust createEntityReqeust)
+        public async Task<Secret<IdentityInfo>> CreateEntity(CreateEntityReqeust createEntityReqeust, string wrapTimeToLive = null)
         {
             Checker.NotNull(createEntityReqeust, "createEntityReqeust");
 
-            return await _polymath.MakeVaultApiRequest<Secret<IdentityInfo>>("v1/identity/entity", HttpMethod.Post, createEntityReqeust).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+            return await _polymath.MakeVaultApiRequest<Secret<IdentityInfo>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity", HttpMethod.Post, createEntityReqeust, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
+        public async Task<Secret<CreateEntityAliasInfo>> CreateEntityAlias(CreateEntityAliasInfo createEntityAliasInfo, string wrapTimeToLive = null)
+        {
+            Checker.NotNull(createEntityAliasInfo, "createEntityAliasInfo");
+            return await _polymath.MakeVaultApiRequest<Secret<CreateEntityAliasInfo>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity-alias", HttpMethod.Post, createEntityAliasInfo, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
+        public  async Task<Secret<IdentityInfo>> GetEntityById(string id, string wrapTimeToLive = null)
+        {
+            Checker.NotNull(id, "id");
+            return await _polymath.MakeVaultApiRequest<Secret<IdentityInfo>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity/id/" + id, HttpMethod.Get, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

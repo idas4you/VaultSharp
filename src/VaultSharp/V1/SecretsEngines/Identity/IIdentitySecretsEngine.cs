@@ -52,6 +52,20 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// </summary>
         /// <param name="createEntityReqeust"></param>
         /// <returns></returns>
-        Task<Secret<IdentityInfo>> CreateEntity(CreateEntityReqeust createEntityReqeust);
+        Task<Secret<IdentityInfo>> CreateEntity(CreateEntityReqeust createEntityReqeust, string wrapTimeToLive = null);
+
+        /// <summary>
+        /// This endpoint queries the entity by its identifier.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<Secret<IdentityInfo>> GetEntityById(string id, string wrapTimeToLive = null);
+
+        /// <summary>
+        /// This endpoint creates a new alias for an entity.
+        /// </summary>
+        /// <param name="createEntityAliasReqeust"></param>
+        /// <returns></returns>
+        Task<Secret<CreateEntityAliasInfo>> CreateEntityAlias(CreateEntityAliasInfo createEntityAliasReqeust, string wrapTimeToLive = null);
     }
 }

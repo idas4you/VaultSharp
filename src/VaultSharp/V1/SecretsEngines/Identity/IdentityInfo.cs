@@ -10,7 +10,7 @@ namespace VaultSharp.V1.SecretsEngines.Identity
     public class IdentityInfo
     {
         [JsonProperty("aliases")]
-        public List<string> Aliases { get; set; }
+        public List<EntityAliasInfo> Aliases { get; set; }
         [JsonProperty("creation_time")]
         public DateTime CreationTime { get; set; }
 
@@ -32,7 +32,7 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
         [JsonProperty("mfa_secrets")]
-        public string MfaSecrets { get; set; }
+        public object MfaSecrets { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("namespace_id")]

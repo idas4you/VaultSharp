@@ -47,5 +47,10 @@ namespace VaultSharp.V1.SecretsEngines.SSH
 
             return await _polymath.MakeVaultApiRequest<Secret<SSHCaInfo>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/config/ca", HttpMethod.Post, submitCARequest).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
+
+        public async Task DeleteCaInformation(string mountPoint = null)
+        {
+            await _polymath.MakeVaultApiRequest<Secret<SSHCaInfo>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/config/ca", HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
     }
 }

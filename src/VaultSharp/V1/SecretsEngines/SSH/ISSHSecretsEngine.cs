@@ -59,8 +59,19 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         /// This endpoint allows submitting the CA information for the secrets engine via an SSH key pair. If you have already set a certificate and key, they will be overridden.
         /// </summary>
         /// <param name="submitCARequest"></param>
-        /// <param name="mountPoint"></param>
+        /// <param name="mountPoint"><para>[optional]</para>
+        /// The mount point for the SSH backend. Defaults to <see cref="SecretsEngineMountPoints.SSH" />
+        /// Provide a value only if you have customized the SSH mount point.</param>
         /// <returns></returns>
         Task<Secret<SSHCaInfo>> SubmitCaInformation(SubmitCARequest submitCARequest = null, string mountPoint = null);
+
+        /// <summary>
+        /// This endpoint deletes the CA information for the backend via an SSH key pair.
+        /// </summary>
+        /// <param name="mountPoint"><para>[optional]</para>
+        /// The mount point for the SSH backend. Defaults to <see cref="SecretsEngineMountPoints.SSH" />
+        /// Provide a value only if you have customized the SSH mount point.</param>
+        /// <returns></returns>
+        Task DeleteCaInformation(string mountPoint = null);
     }
 }

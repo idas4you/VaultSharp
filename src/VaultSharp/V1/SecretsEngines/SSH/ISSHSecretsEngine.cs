@@ -56,6 +56,16 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         Task<Secret<SignedKeyResponse>> CreateRole(string name, SSHRoles sshRoleRequest, string mountPoint = null);
 
         /// <summary>
+        /// This endpoint deletes a named role.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="mountPoint"><para>[optional]</para>
+        /// The mount point for the SSH backend. Defaults to <see cref="SecretsEngineMountPoints.SSH" />
+        /// Provide a value only if you have customized the SSH mount point.</param>
+        /// <returns></returns>
+        Task DeleteRole(string name, string mountPoint = null);
+
+        /// <summary>
         /// This endpoint allows submitting the CA information for the secrets engine via an SSH key pair. If you have already set a certificate and key, they will be overridden.
         /// </summary>
         /// <param name="submitCARequest"></param>

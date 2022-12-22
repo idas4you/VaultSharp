@@ -41,6 +41,13 @@ namespace VaultSharp.V1.SecretsEngines.SSH
             return await _polymath.MakeVaultApiRequest<Secret<SignedKeyResponse>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/roles/" + name, HttpMethod.Post, sshRoles).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
+        public async Task DeleteRole(string name, string mountPoint = null)
+        {
+            Checker.NotNull(name, "name");
+            
+            return await _polymath.MakeVaultApiRequest(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/roles/" + name, HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
         public async Task<Secret<SSHCaInfo>> SubmitCaInformation(SubmitCARequest submitCARequest = null, string mountPoint = null)
         {
             submitCARequest = submitCARequest ?? new SubmitCARequest();

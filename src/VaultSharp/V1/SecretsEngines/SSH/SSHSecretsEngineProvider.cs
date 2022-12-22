@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using VaultSharp.Core;
 using VaultSharp.V1.Commons;
 
@@ -38,6 +39,13 @@ namespace VaultSharp.V1.SecretsEngines.SSH
             Checker.NotNull(sshRoles, "sshRoles");
 
             return await _polymath.MakeVaultApiRequest<Secret<SignedKeyResponse>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/roles/" + name, HttpMethod.Post, sshRoles).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
+        public async Task<Secret<SSHCaInfo>> SubmitCaInformation(SubmitCARequest submitCARequest = null, string mountPoint = null)
+        {
+            submitCARequest = submitCARequest ?? new SubmitCARequest();
+
+            return await _polymath.MakeVaultApiRequest<Secret<SSHCaInfo>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/config/ca", HttpMethod.Post, submitCARequest).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

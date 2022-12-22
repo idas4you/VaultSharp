@@ -54,5 +54,13 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         /// Provide a value only if you have customized the SSH mount point.</param>
         /// <returns></returns>
         Task<Secret<SignedKeyResponse>> CreateRole(string name, SSHRoles sshRoleRequest, string mountPoint = null);
+
+        /// <summary>
+        /// This endpoint allows submitting the CA information for the secrets engine via an SSH key pair. If you have already set a certificate and key, they will be overridden.
+        /// </summary>
+        /// <param name="submitCARequest"></param>
+        /// <param name="mountPoint"></param>
+        /// <returns></returns>
+        Task<Secret<SSHCaInfo>> SubmitCaInformation(SubmitCARequest submitCARequest = null, string mountPoint = null);
     }
 }

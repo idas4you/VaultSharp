@@ -128,7 +128,7 @@ namespace VaultSharp.Core
         public async Task MakeVaultApiRequest(string mountPoint, string path, HttpMethod httpMethod, object requestData = null, bool rawResponse = false, bool unauthenticated = false)
         {
             Checker.NotNull(mountPoint, "mountPoint");
-            
+
             await MakeVaultApiRequest(VaultSharpV1Path + mountPoint.Trim('/') + path, httpMethod, requestData, rawResponse, unauthenticated: unauthenticated).ConfigureAwait(VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
@@ -137,7 +137,7 @@ namespace VaultSharp.Core
             await MakeVaultApiRequest<JToken>(resourcePath, httpMethod, requestData, rawResponse, unauthenticated: unauthenticated).ConfigureAwait(VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
-        public async Task<TResponse> MakeVaultApiRequest<TResponse>(string mountPoint, string path, HttpMethod httpMethod, object requestData = null, bool rawResponse = false, Action<HttpResponseMessage> postResponseAction = null, string wrapTimeToLive = null, bool unauthenticated = false) where TResponse : class 
+        public async Task<TResponse> MakeVaultApiRequest<TResponse>(string mountPoint, string path, HttpMethod httpMethod, object requestData = null, bool rawResponse = false, Action<HttpResponseMessage> postResponseAction = null, string wrapTimeToLive = null, bool unauthenticated = false) where TResponse : class
         {
             Checker.NotNull(mountPoint, "mountPoint");
 

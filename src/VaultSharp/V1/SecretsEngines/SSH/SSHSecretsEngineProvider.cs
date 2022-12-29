@@ -33,6 +33,14 @@ namespace VaultSharp.V1.SecretsEngines.SSH
             return await _polymath.MakeVaultApiRequest<Secret<SignedKeyResponse>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/sign/" + roleName.Trim('/'), HttpMethod.Post, signKeyRequest).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
 
+        public async Task<Secret<SSHRoles>> ReadRole(string name, string mountPoint = null)
+        {
+            Checker.NotNull(name, "name");
+
+            return await _polymath.MakeVaultApiRequest<Secret<SSHRoles>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/roles/" + name, HttpMethod.Get).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
+
         public async Task<Secret<SignedKeyResponse>> CreateRole(string name, SSHRoles sshRoles, string mountPoint = null)
         {
             Checker.NotNull(name, "name");

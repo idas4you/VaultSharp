@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -19,11 +20,12 @@ namespace VaultSharp.V1.AuthMethods.UserPass
             this._polymath = polymath;
         }
 
-        public async Task CreateUserPassAsync(string userName, CreateUserPassRequest createUserpassRequest)
+        public async Task CreateUserPassAsync(string userName, string password, string mountPoint = AuthMethodDefaultPaths.UserPass)
         {
-            Checker.NotNull(createUserpassRequest, "createUserpassRequest");
+            Checker.NotNull(userName, "userName");
+            Checker.NotNull(password, "password");
 
-            await _polymath.MakeVaultApiRequest("v1/auth/userpass/users/" + userName, HttpMethod.Post, createUserpassRequest).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+            await _polymath.MakeVaultApiRequest("v1/auth/" + mountPoint.Trim('/') + "/login/" + userName.Trim('/'), HttpMethod.Post, new { password }).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

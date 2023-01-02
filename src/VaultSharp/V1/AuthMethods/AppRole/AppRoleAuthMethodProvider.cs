@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using VaultSharp.Core;
 using VaultSharp.V1.AuthMethods.AppRole.Models;
@@ -20,6 +21,7 @@ namespace VaultSharp.V1.AuthMethods.AppRole
         {
             Checker.NotNull(mountPoint, "mountPoint");
             Checker.NotNull(roleName, "roleName");
+
             return await _polymath.MakeVaultApiRequest<Secret<AppRoleInfo>>("v1/auth/"+ mountPoint.Trim('/')+"/role/"+roleName.Trim('/'), HttpMethod.Get).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }

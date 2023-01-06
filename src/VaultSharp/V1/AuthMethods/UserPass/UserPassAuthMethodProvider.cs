@@ -27,5 +27,13 @@ namespace VaultSharp.V1.AuthMethods.UserPass
 
             await _polymath.MakeVaultApiRequest("v1/auth/" + mountPoint.Trim('/') + "/users/" + userName.Trim('/'), HttpMethod.Post, new { password }).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
+
+        public async Task UpdatePasswordAsync(string userName, string password, string mountPoint = AuthMethodDefaultPaths.UserPass)
+        {
+            Checker.NotNull(userName, "userName");
+            Checker.NotNull(password, "password");
+
+            await _polymath.MakeVaultApiRequest("v1/auth/" + mountPoint.Trim('/') + "/users/" + userName.Trim('/') + "/password", HttpMethod.Post, new { password }).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
     }
 }

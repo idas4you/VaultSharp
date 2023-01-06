@@ -41,6 +41,7 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         }
 
 
+
         public async Task<Secret<SignedKeyResponse>> CreateRole(string name, SSHRoles sshRoles, string mountPoint = null)
         {
             Checker.NotNull(name, "name");
@@ -66,6 +67,11 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         public async Task DeleteCaInformation(string mountPoint = null)
         {
             await _polymath.MakeVaultApiRequest<Secret<SSHCaInfo>>(mountPoint ?? _polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/config/ca", HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
+        public async Task<Secret<RoleList>> ReadAllRoles()
+        {
+            return await _polymath.MakeVaultApiRequest<Secret<RoleList>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.SSH, "/roles?list=true", HttpMethod.Get).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
     }
 }

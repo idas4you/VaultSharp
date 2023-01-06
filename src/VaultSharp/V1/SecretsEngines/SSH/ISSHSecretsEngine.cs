@@ -67,6 +67,14 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         Task<Secret<SSHRoles>> ReadRole(string name, string mountPoint = null);
 
         /// <summary>
+        /// This endpoint returns a list of available roles. Only the role names are returned, not any values.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="mountPoint"></param>
+        /// <returns></returns>
+        Task<Secret<RoleList>> ReadAllRoles();
+
+        /// <summary>
         /// This endpoint deletes a named role.
         /// </summary>
         /// <param name="name"></param>

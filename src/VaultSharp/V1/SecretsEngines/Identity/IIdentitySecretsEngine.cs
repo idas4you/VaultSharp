@@ -61,6 +61,15 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// <returns></returns>
         Task<Secret<IdentityInfo>> GetEntityByName(string name, string wrapTimeToLive = null);
 
+
+        /// <summary>
+        /// This endpoint is used to create or update an entity by a given name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="wrapTimeToLive"></param>
+        /// <returns></returns>
+        Task<Secret<IdentityInfo>> CreateEntityByName(string name, CreateEntityReqeust createEntityReqeust, string wrapTimeToLive = null);
+
         /// <summary>
         /// This endpoint creates a new alias for an entity.
         /// </summary>

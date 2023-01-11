@@ -54,5 +54,13 @@ namespace VaultSharp.V1.SecretsEngines.Identity
 
             return await _polymath.MakeVaultApiRequest<Secret<IdentityInfo>>(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity/name/" + name, HttpMethod.Post, createEntityAliasReqeust, wrapTimeToLive: wrapTimeToLive).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
         }
+
+        public async Task DeleteEntityByName(string name)
+        {
+            Checker.NotNull(name, "name");
+
+            await _polymath.MakeVaultApiRequest(_polymath.VaultClientSettings.SecretsEngineMountPoints.Identity, "/entity/name/" + name, HttpMethod.Delete).ConfigureAwait(_polymath.VaultClientSettings.ContinueAsyncTasksOnCapturedContext);
+        }
+
     }
 }

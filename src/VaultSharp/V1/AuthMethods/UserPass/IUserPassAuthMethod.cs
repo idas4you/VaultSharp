@@ -23,5 +23,13 @@ namespace VaultSharp.V1.AuthMethods.UserPass
         /// <param name="mountPoint"></param>
         /// <returns></returns>
         Task UpdatePasswordAsync(string userName, string password, string mountPoint = AuthMethodDefaultPaths.UserPass);
+
+        /// <summary>
+        /// This endpoint deletes the user from the method.
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="mountPoint"></param>
+        /// <returns></returns>
+        Task DeleteUser(string userName, string mountPoint = AuthMethodDefaultPaths.UserPass);
     }
 }

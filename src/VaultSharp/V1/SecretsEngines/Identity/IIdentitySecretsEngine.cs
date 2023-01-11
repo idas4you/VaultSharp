@@ -61,6 +61,13 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// <returns></returns>
         Task<Secret<IdentityInfo>> GetEntityByName(string name, string wrapTimeToLive = null);
 
+        /// <summary>
+        /// This endpoint deletes an entity and all its associated aliases, given the entity name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="wrapTimeToLive"></param>
+        /// <returns></returns>
+        Task DeleteEntityByName(string name);
 
         /// <summary>
         /// This endpoint is used to create or update an entity by a given name.

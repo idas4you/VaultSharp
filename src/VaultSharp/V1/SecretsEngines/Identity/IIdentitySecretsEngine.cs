@@ -51,13 +51,15 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// This endpoint creates or updates an Entity.
         /// </summary>
         /// <param name="createEntityReqeust"></param>
+        /// <param name="wrapTimeToLive"></param>
         /// <returns></returns>
         Task<Secret<IdentityInfo>> CreateEntity(CreateEntityReqeust createEntityReqeust, string wrapTimeToLive = null);
 
         /// <summary>
-        /// This endpoint queries the entity by its identifier.
+        ///  This endpoint queries the entity by its identifier.
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="wrapTimeToLive"></param>
         /// <returns></returns>
         Task<Secret<IdentityInfo>> GetEntityByName(string name, string wrapTimeToLive = null);
 
@@ -65,7 +67,6 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// This endpoint deletes an entity and all its associated aliases, given the entity name.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="wrapTimeToLive"></param>
         /// <returns></returns>
         Task DeleteEntityByName(string name);
 
@@ -73,6 +74,7 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// This endpoint is used to create or update an entity by a given name.
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="createEntityReqeust"></param>
         /// <param name="wrapTimeToLive"></param>
         /// <returns></returns>
         Task<Secret<IdentityInfo>> CreateEntityByName(string name, CreateEntityReqeust createEntityReqeust, string wrapTimeToLive = null);
@@ -81,6 +83,7 @@ namespace VaultSharp.V1.SecretsEngines.Identity
         /// This endpoint creates a new alias for an entity.
         /// </summary>
         /// <param name="createEntityAliasReqeust"></param>
+        /// <param name="wrapTimeToLive"></param>
         /// <returns></returns>
         Task<Secret<CreateEntityAliasInfo>> CreateEntityAlias(CreateEntityAliasInfo createEntityAliasReqeust, string wrapTimeToLive = null);
     }

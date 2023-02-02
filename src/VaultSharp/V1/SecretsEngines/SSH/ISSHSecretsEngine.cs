@@ -59,7 +59,6 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         /// This endpoint queries a named role.
         /// </summary>
         /// <param name="name"> Specifies the name of the role to create. This is part of the request URL.</param>
-        /// <param name="sshRoleRequest"></param>
         /// <param name="mountPoint"><para>[optional]</para>
         /// The mount point for the SSH backend. Defaults to <see cref="SecretsEngineMountPoints.SSH" />
         /// Provide a value only if you have customized the SSH mount point.</param>
@@ -69,8 +68,6 @@ namespace VaultSharp.V1.SecretsEngines.SSH
         /// <summary>
         /// This endpoint returns a list of available roles. Only the role names are returned, not any values.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="mountPoint"></param>
         /// <returns></returns>
         Task<Secret<RoleList>> ReadAllRoles();
 
